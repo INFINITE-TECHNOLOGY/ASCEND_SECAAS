@@ -4,7 +4,7 @@ plugins {
 }
 sourceCompatibility = 1.7
 group = "io.infinite"
-version = "0.0.1-SNAPSHOT"
+version = "1.0.0"
 description = "Ascend demo"
 wrapper {
     gradleVersion = "5.0"
