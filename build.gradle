@@ -1,0 +1,49 @@
+plugins {
+    id "groovy"
+    id "idea"
+}
+sourceCompatibility = 1.7
+group = "io.infinite"
+version = "0.0.1-SNAPSHOT"
+description = "Ascend demo"
+wrapper {
+    gradleVersion = "5.0"
+}
+repositories {
+    jcenter()
+    maven {
+        url  "https://dl.bintray.com/infinite-technology/io.i-t"
+    }
+}
+sourceSets {
+    main.groovy.srcDirs = ["src"]
+}
+dependencies {
+    compile "io.i-t:ascend-app:0.1.6"
+    compile "org.codehaus.groovy:groovy-all:2.5.4"
+    compile 'org.springframework.boot:spring-boot-starter-data-rest'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+}
+task copyToLib(type: Copy) {
+    into "$buildDir/libs"
+    from(configurations.compile)
+}
+task copyApplicationProperties(type: Copy, dependsOn: [jar]) {
+    from "src/main/resources/"
+    into "build/conf"
+    include "application.properties"
+}
+task copyConf(type: Copy, dependsOn: [jar]) {
+    from "src/conf/"
+    into "build/conf"
+}
+task stage(dependsOn: ['build', 'clean'])
+stage.dependsOn(copyToLib)
+stage.dependsOn(copyApplicationProperties)
+stage.dependsOn(copyConf)
+build.mustRunAfter clean
+
+configurations {
+    providedRuntime
+    compile.exclude(group: 'ch.qos.logback')
+}
