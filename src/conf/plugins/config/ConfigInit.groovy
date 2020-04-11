@@ -18,8 +18,8 @@ void orbit() {
     GrantRepository grantRepository = binding.getVariable("grantRepository") as GrantRepository
     Set<Grant> grants = new HashSet<Grant>()
     log.info("Initializing config")
-    grants.add(new Grant(httpMethod: "POST", urlRegex: "https:\\/\\/orbit-secured\\.herokuapp\\.com\\/orbit\\/sms"))
-    grants.add(new Grant(httpMethod: "POST", urlRegex: "https:\\/\\/orbit-secured\\.herokuapp\\.com\\/orbit\\/email"))
+    grants.add(new Grant(httpMethod: "POST", urlRegex: "https:\\/\\/orbit-secured\\.herokuapp\\.com\\/orbit\\/%clientId%\\/managedEmail"))
+    grants.add(new Grant(httpMethod: "POST", urlRegex: "https:\\/\\/orbit-secured\\.herokuapp\\.com\\/orbit\\/%clientId%\\/managedSms"))
     grantRepository.saveAll(grants)
     grantRepository.flush()
     ScopeRepository scopeRepository = binding.getVariable("scopeRepository") as ScopeRepository
