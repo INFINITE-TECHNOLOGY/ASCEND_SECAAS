@@ -37,7 +37,7 @@ Map<String, String> applyPlugin() {
             return null
         }
         authentication.status = AuthenticationStatus.SUCCESSFUL
-        return ["clientId": authentication.authenticationData.publicCredentials.get("appName")]
+        return ["appName": authentication.authenticationData.publicCredentials.get("appName")]
     } catch (Exception e) {
         log.error(e.getMessage(), e)
         log.info(authentication.toString())
