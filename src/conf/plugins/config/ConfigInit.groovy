@@ -40,8 +40,8 @@ void orbit() {
     AuthorizationTypeRepository authorizationTypeRepository = binding.getVariable("authorizationTypeRepository") as AuthorizationTypeRepository
     Set<AuthorizationType> authorizationTypes = new HashSet<AuthorizationType>()
     authorizationTypes.add(new AuthorizationType(name: "App2app", identityTypes: identityTypes, scopes: scopes
-            , durationSeconds: 1296000
-            , maxUsageCount: 1000
+            , durationSeconds: 30
+            , maxUsageCount: 1
             , isRefreshAllowed: false
     ))
     authorizationTypeRepository.saveAll(authorizationTypes)
