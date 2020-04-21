@@ -28,8 +28,8 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
         })
                 .and()
                 .authorizeRequests()
-                .antMatchers("/ascend/**").permitAll()
-                .antMatchers("/orbit/public/**").permitAll()
+                .antMatchers("/public/**").permitAll()
+                .antMatchers("/ascend/public/**").permitAll()
                 .anyRequest().authenticated()
     }
 
