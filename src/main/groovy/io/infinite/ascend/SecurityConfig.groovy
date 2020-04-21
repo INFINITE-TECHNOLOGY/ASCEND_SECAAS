@@ -29,6 +29,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/ascend/**").permitAll()
+                .antMatchers("/orbit/public/**").permitAll()
                 .anyRequest().authenticated()
     }
 
