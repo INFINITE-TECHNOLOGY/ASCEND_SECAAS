@@ -1,4 +1,4 @@
-package main.groovy.io.infinite.ascend
+package io.infinite.ascend
 
 import groovy.util.logging.Slf4j
 import io.infinite.blackbox.BlackBox
@@ -6,7 +6,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.config.http.SessionCreationPolicy
-import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter
 
 import javax.servlet.http.HttpServletResponse
 

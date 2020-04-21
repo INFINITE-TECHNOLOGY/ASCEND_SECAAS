@@ -1,47 +1,57 @@
+/*
+File
+https://github.com/virtualdogbert/GroovyConfigWriter/blob/master/build.gradle
+has been used as basis for this file.
+ */
 plugins {
     id "groovy"
     id "idea"
+    id "org.springframework.boot" version "2.1.1.RELEASE"
+    id "io.spring.dependency-management" version "1.0.6.RELEASE"
+    id "enterprise.groovy.plugin" version "1.0.4"
 }
-sourceCompatibility = 1.7
-group = "io.infinite"
-version = "1.0.0"
-description = "Ascend demo"
-wrapper {
-    gradleVersion = "5.0"
-}
+
 repositories {
     jcenter()
     maven {
         url  "https://dl.bintray.com/infinite-technology/io.i-t"
     }
 }
+
+bootJar {
+    baseName = 'ascend-secaas'
+    version = '1.0.0'
+}
+
+ext['groovy.version'] = '2.5.4'
+ext['springBootVersion'] = '2.1.1.RELEASE'
+
+sourceCompatibility = 1.8
+group = "io.i-t"
+version = "1.0.0"
+description = "Web Service Access Management"
+
 sourceSets {
-    main.groovy.srcDirs = ["src"]
+    main.groovy.srcDirs = ["src/main/groovy"]
+    test.groovy.srcDirs = ["src/test/groovy"]
 }
+
 dependencies {
-    compile "io.i-t:ascend-web:0.2.1"
-    compile "org.codehaus.groovy:groovy-all:2.5.4"
+    compile 'org.codehaus.groovy:groovy-all:2.5.4'
+    compile 'io.i-t:ascend-web:0.2.1'
 }
-task copyToLib(type: Copy) {
-    into "$buildDir/libs"
-    from(configurations.compile)
+
+ext {
+    theTitle = "Web Service Access Management"
+    titleForDocumentation = archivesBaseName + " " + version
+    packageTitle = group
+    description = "Web Service Access Management"
 }
-task copyApplicationProperties(type: Copy, dependsOn: [jar]) {
-    from "src/main/resources/"
-    into "build/conf"
-    include "application.properties"
-}
-task copyConf(type: Copy, dependsOn: [jar]) {
-    from "src/conf/"
-    into "build/conf"
-}
-task stage(dependsOn: ['build', 'clean'])
-stage.dependsOn(copyToLib)
-stage.dependsOn(copyApplicationProperties)
-stage.dependsOn(copyConf)
-build.mustRunAfter clean
 
 configurations {
     providedRuntime
     compile.exclude(group: 'ch.qos.logback')
 }
+
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean

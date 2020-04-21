@@ -1,4 +1,4 @@
-package main.groovy.io.infinite.ascend
+package io.infinite.ascend
 
 import groovy.transform.CompileStatic
 import groovy.util.logging.Slf4j

@@ -1,5 +1,4 @@
-package main.groovy.io.infinite.ascend
-
+package io.infinite.ascend
 
 import groovy.util.logging.Slf4j
 import io.infinite.blackbox.BlackBox
@@ -7,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
 import org.springframework.hateoas.config.EnableHypermediaSupport
 
 @EnableHypermediaSupport(type = EnableHypermediaSupport.HypermediaType.HAL)
