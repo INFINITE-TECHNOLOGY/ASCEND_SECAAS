@@ -21,6 +21,7 @@ sourceSets {
 dependencies {
     compile "io.i-t:ascend-web:0.2.0"
     compile "org.codehaus.groovy:groovy-all:2.5.4"
+    compile group: 'org.springframework.boot', name: 'spring-boot-loader', version: '2.1.1.RELEASE'
 }
 task copyToLib(type: Copy) {
     into "$buildDir/libs"
