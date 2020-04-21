@@ -19,10 +19,8 @@ sourceSets {
     main.groovy.srcDirs = ["src"]
 }
 dependencies {
-    compile "io.i-t:ascend-app:0.1.6"
+    compile "io.i-t:ascend-web:0.2.0"
     compile "org.codehaus.groovy:groovy-all:2.5.4"
-    compile 'org.springframework.boot:spring-boot-starter-data-rest'
-    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
 }
 task copyToLib(type: Copy) {
     into "$buildDir/libs"
