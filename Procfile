@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -Dloader.path="build/libs" -Dspring.config.location="build/conf/application.properties" $JAVA_OPTS -cp "build/libs/ascend-app-0.2.0.jar" org.springframework.boot.loader.PropertiesLauncher
+web: java -Dserver.port=$PORT -Dloader.path="build/libs" -Dspring.config.location="build/conf/application.properties" $JAVA_OPTS -cp "build/libs/ascend-web-0.2.1.jar" org.springframework.boot.loader.PropertiesLauncher
