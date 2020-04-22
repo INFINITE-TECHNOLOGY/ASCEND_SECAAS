@@ -38,7 +38,7 @@ sourceSets {
 
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.5.4'
-    compile 'io.i-t:ascend-sdk:0.2.3'
+    compile 'io.i-t:ascend-sdk:0.2.4'
 }
 
 ext {
