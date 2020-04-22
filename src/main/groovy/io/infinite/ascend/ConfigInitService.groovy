@@ -71,6 +71,7 @@ class ConfigInitService {
         authorizationTypes.add(new PrototypeAuthorization(name: "App2app", identities: identityTypes, scopes: scopes
                 , durationSeconds: 3000
                 , maxUsageCount: 100
+                , isRefresh: false
         ))
         authorizationTypeRepository.saveAll(authorizationTypes)
         authorizationTypeRepository.flush()
