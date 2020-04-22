@@ -35,7 +35,7 @@ class ConfigInitService {
 
     @BlackBox
     void initConfig() {
-        if (namespaceRepository.findByName("OrbitSAAS").present) {
+        if (namespaceRepository.findByName("OrbitSaaS").present) {
             return
         }
         Set<PrototypeGrant> grants = new HashSet<PrototypeGrant>()
@@ -47,7 +47,7 @@ class ConfigInitService {
         grantRepository.saveAll(grants)
         grantRepository.flush()
         Set<PrototypeScope> scopes = new HashSet<PrototypeScope>()
-        scopes.add(new PrototypeScope(name: "Managed Notifications", grants: grants))
+        scopes.add(new PrototypeScope(name: "ManagedNotifications", grants: grants))
         scopeRepository.saveAll(scopes)
         scopeRepository.flush()
         Set<PrototypeAuthentication> authenticationTypes = new HashSet<PrototypeAuthentication>()
@@ -66,7 +66,7 @@ class ConfigInitService {
         authorizationTypeRepository.saveAll(authorizationTypes)
         authorizationTypeRepository.flush()
         PrototypeNamespace namespace = new PrototypeNamespace(
-                name: "OrbitSAAS",
+                name: "OrbitSaaS",
                 authorizations: authorizationTypes
         )
         namespaceRepository.saveAndFlush(namespace)
