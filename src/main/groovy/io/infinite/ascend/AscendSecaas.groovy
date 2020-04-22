@@ -19,6 +19,7 @@ class AscendSecaas implements CommandLineRunner {
     static void main(String[] args) {
         System.setProperty("ascendValidationUrl", "")
         System.setProperty("ascendClientAppName", "")
+        System.setProperty("ascendClientAppPrivateKey", "")
         SpringApplication.run(AscendSecaas.class, args)
     }
 
