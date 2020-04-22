@@ -17,6 +17,7 @@ class AscendSecaas implements CommandLineRunner {
     ConfigInitService configInitService
 
     static void main(String[] args) {
+        System.setProperty("ascendValidationUrl", "")
         SpringApplication.run(AscendSecaas.class, args)
     }
 
