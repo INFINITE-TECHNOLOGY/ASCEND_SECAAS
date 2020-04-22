@@ -45,7 +45,7 @@ class ConfigInitService {
         }
         trustedAppRepository.saveAndFlush(new TrustedApp(
                 appName: "cashqbot-qa",
-                publicKey: null
+                publicKey: ""
         ))
         Set<PrototypeGrant> grants = new HashSet<PrototypeGrant>()
         log.info("Initializing config")
