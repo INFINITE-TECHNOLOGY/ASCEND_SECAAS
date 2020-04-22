@@ -29,8 +29,15 @@ class ConfigInitService {
     @Autowired
     PrototypeAuthorizationRepository authorizationTypeRepository
 
+
+    @Autowired
+    PrototypeNamespaceRepository namespaceRepository
+
     @BlackBox
     void initConfig() {
+        if (namespaceRepository.findByName("OrbitSAAS").present) {
+            return
+        }
         Set<PrototypeGrant> grants = new HashSet<PrototypeGrant>()
         log.info("Initializing config")
         grants.add(new PrototypeGrant(httpMethod: "POST", urlRegex: "https:\\/\\/orbit-secured\\.herokuapp\\.com\\/orbit\\/%appName%\\/managedEmail"))
@@ -40,7 +47,7 @@ class ConfigInitService {
         grantRepository.saveAll(grants)
         grantRepository.flush()
         Set<PrototypeScope> scopes = new HashSet<PrototypeScope>()
-        scopes.add(new PrototypeScope(name: "Orbit", grants: grants))
+        scopes.add(new PrototypeScope(name: "Managed Notifications", grants: grants))
         scopeRepository.saveAll(scopes)
         scopeRepository.flush()
         Set<PrototypeAuthentication> authenticationTypes = new HashSet<PrototypeAuthentication>()
@@ -58,5 +65,10 @@ class ConfigInitService {
         ))
         authorizationTypeRepository.saveAll(authorizationTypes)
         authorizationTypeRepository.flush()
+        PrototypeNamespace namespace = new PrototypeNamespace(
+                name: "OrbitSAAS",
+                authorizations: authorizationTypes
+        )
+        namespaceRepository.saveAndFlush(namespace)
     }
 }
