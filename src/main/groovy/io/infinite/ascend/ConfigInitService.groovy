@@ -66,7 +66,7 @@ class ConfigInitService {
         identityTypeRepository.flush()
         Set<PrototypeAuthorization> authorizationTypes = new HashSet<PrototypeAuthorization>()
         authorizationTypes.add(new PrototypeAuthorization(name: "App2app", identities: identityTypes, scopes: scopes
-                , durationSeconds: 3000
+                , durationSeconds: 30
                 , maxUsageCount: 3
                 , isRefresh: false
                 , serverNamespace: "OrbitSaaS"
