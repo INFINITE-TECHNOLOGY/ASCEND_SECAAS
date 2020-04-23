@@ -57,7 +57,7 @@ class ConfigInitService {
         scopeRepository.saveAll(scopes)
         scopeRepository.flush()
         Set<PrototypeAuthentication> authenticationTypes = new HashSet<PrototypeAuthentication>()
-        authenticationTypes.add(new PrototypeAuthentication(name: "ClientJwt"))
+        authenticationTypes.add(new PrototypeAuthentication(name: "clientJwt"))
         authenticationTypeRepository.saveAll(authenticationTypes)
         authenticationTypeRepository.flush()
         Set<PrototypeIdentity> identityTypes = new HashSet<PrototypeIdentity>()
